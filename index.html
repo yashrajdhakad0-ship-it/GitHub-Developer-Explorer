@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GitScope — Simple GitHub Explorer</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="head">
+    <div class="app-header">
+      <h2>🔍 GitScope</h2>
+      <div class="token-container">
+        <input type="password" id="tokenInput" placeholder="GitHub PAT (optional)" title="Enter token to avoid rate limits">
+      </div>
+    </div>
+  </header>
+  <main class="main-content">
+    <!-- Search Box -->
+    <section class="search-section">
+      <form id="searchForm" class="search-form">
+        <input type="text" id="usernameInput" placeholder="Enter GitHub username (e.g. yyx990803)..." required>
+        <button type="submit" class="btn-primary">Search</button>
+      </form>
+    </section>
+    <!-- Error/Status Info -->
+    <div id="statusMessage" class="status-msg">Search for a username above to explore their profile.</div>
+    <!-- Main Dashboard -->
+    <section id="dashboard" class="dashboard-grid hidden">
+      <!-- Left Profile Column -->
+      <aside class="profile-card">
+        <img id="userAvatar" src="" alt="Avatar" class="avatar">
+        <h2 id="userName">Name</h2>
+        <a id="userLogin" href="" target="_blank">@username</a>
+        <p id="userBio">Bio goes here...</p>
+        
+        <div class="profile-meta">
+          <p id="metaLoc">📍 Location</p>
+          <p id="metaBlog">🌐 <a href="" target="_blank" id="blogLink">Website</a></p>
+          <p id="metaJoined">📅 Joined Date</p>
+        </div>
+        <div class="badges-section">
+          <h4>Achievements</h4>
+          <div id="achievementsList" class="badges-list"></div>
+        </div>
+      </aside>
+      <!-- Right Repository Column -->
+      <div class="repos-column">
+        <!-- Stats Row -->
+        <div class="stats-row">
+          <div class="stat-box"><h4>Repos</h4><p id="statRepos">0</p></div>
+          <div class="stat-box"><h4>Stars</h4><p id="statStars">0</p></div>
+          <div class="stat-box"><h4>Forks</h4><p id="statForks">0</p></div>
+          <div class="stat-box"><h4>Followers</h4><p id="statFollowers">0</p></div>
+        </div>
+        <!-- Language Bar Chart -->
+        <div class="card">
+          <h4>Language Distribution</h4>
+          <div id="langBar" class="lang-bar"></div>
+          <div id="langLegend" class="lang-legend"></div>
+        </div>
+        <!-- Repos List Header -->
+        <div class="card repos-controls">
+          <div class="controls-row">
+            <input type="text" id="repoSearch" placeholder="Filter by name...">
+            <select id="repoSort">
+              <option value="stars">Stars</option>
+              <option value="forks">Forks</option>
+              <option value="size">Size</option>
+              <option value="updated">Recent</option>
+            </select>
+          </div>
+          <div id="reposList" class="repos-list"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
