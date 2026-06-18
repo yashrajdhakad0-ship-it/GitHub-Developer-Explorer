@@ -2,7 +2,7 @@ const state = { token: localStorage.getItem('token') || '', user: null, repos: [
 const colors = { js: '#f1e05a', html: '#e34c26', css: '#563d7c', python: '#3572A5', ts: '#3178c6', other: '#8b949e' };
 const $ = id => document.getElementById(id);
 const toggle = (el, show) => el.classList.toggle('hidden', !show);
-// Cache manager (10 mins)
+
 const cache = (k, v) => {
   if (v) return localStorage.setItem(`gs_${k}`, JSON.stringify({ t: Date.now(), d: v }));
   const c = JSON.parse(localStorage.getItem(`gs_${k}`));
@@ -68,7 +68,7 @@ function display(user, repos) {
   ].filter(Boolean);
   $('achievementsList').innerHTML = (badges.length ? badges : ['🌱 Rising Star'])
     .map(b => `<span class="badge-tag">${b}</span>`).join('');
-  // Languages Horizontal Bar Chart
+  //  Horizontal Bar Chart
   let total = 0;
   const langMap = {};
   repos.forEach(r => { if (r.language && r.size > 0) { langMap[r.language] = (langMap[r.language] || 0) + r.size; total += r.size; } });
